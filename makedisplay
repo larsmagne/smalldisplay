@@ -74,7 +74,7 @@ pnmpaste -replace imagecut.pnm 0 0 background.pnm > sd1.pnm
 # image.
 if [ "$topText" != "" ]; then
     theight=`pnmcrop alphabottom.pgm | pnmfile | awk '{ print $6; }'`
-    yoff=`expr $screenHeight - $theight - 15`
+    yoff=`expr $screenHeight - $theight - 20`
     twidth=`pnmcrop alphatop.pgm | pnmfile | awk '{ print $4; }'`
     xoff=`expr $screenWidth - $twidth - 20`
     pnmcomp -yoff $yoff -xoff 10 -alpha alphabottom.pgm bottom.pnm sd1.pnm |\
@@ -88,7 +88,6 @@ fi
 tifftopnm smalldisplay.tiff | pnmtopng > smalldisplay.png
 
 # Clean up after ourselves
-exit
 rm -f text.aux text.dvi text.log textdata.* text.ps text.tex
 rm -f alphabottom.pgm alpha.pnm alphatop.pgm background.pnm bottom.pnm
 rm -f image.pnm imagecut.pnm sd1.pnm top.pnm
