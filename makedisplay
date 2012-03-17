@@ -46,6 +46,7 @@ for type in bottom top; do
 
 	xsize=`pnmfile $type.pnm | awk '{ print $4; }'`
 	cp $type.pnm alpha.pnm
+	# Blur the generated text to create the alpha channel.
 	for i in `seq 1 $blurTimes`; do
 	    pnmsmooth -size 3 3 alpha.pnm | ppmtopgm |\
                 pgmtopbm -threshold -value 0.1 | pbmtopgm 3 3 > alpha2.pnm
