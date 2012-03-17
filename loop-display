@@ -21,7 +21,7 @@ while true; do
 	        -file /tmp/smalldisplay.png -root
 	    # Create and copy the image for Stories
 	    ~/src/smalldisplay/makedisplay "$picture" "$track"\
-                25 2 "$temp"
+                25 2 "\parbox{4cm}{\begin{flushright}$temp\end{flushright}}"
 	    cp /tmp/smalldisplay.tiff ~/jukebox/tex/smalldisplay25.tiff
 	fi
 	prev="$current"
