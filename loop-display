@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script loops continually on a machine and checks whether a new
+# song has started playing.  This is just an example of how I use the
+# "makedisplay" script, and is not useful as anything but an example.
+
 while true; do
     current=`cat ~/.amp.current`
     dir=`dirname "$current"`
