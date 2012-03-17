@@ -11,13 +11,14 @@ while true; do
     if [ "$prev" != "$current" ]; then
 	sleep 2
 	if [ ! -e "$dir/.nodisplay" ]; then
-	    # Create the image for Quimbies
+	    # Create and display the image for Quimbies
 	    ~/src/smalldisplay/makedisplay "$picture" "$track"
 	    xscreensaver-getimage -display :1\
 	        -file /tmp/smalldisplay.png -root
-	    # Create the image for Stories
+	    # Create and copy the image for Stories
 	    ~/src/smalldisplay/makedisplay "$picture" "$track"\
                 25 2 "$temp"
+	    cp /tmp/smalldisplay.tiff ~/jukebox/tex/smalldisplay25.tiff
 	fi
 	prev="$current"
     fi
