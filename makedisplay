@@ -18,8 +18,8 @@ if [ "$fontSize" = "" ]; then
     fontSize=40
 fi
 
-if [ "$blurtimes" = "" ]; then
-    blurtimes=3
+if [ "$blurTimes" = "" ]; then
+    blurTimes=3
 fi    
 
 cd /tmp
@@ -84,3 +84,7 @@ else
 fi
 
 tifftopnm smalldisplay.tiff | pnmtopng > smalldisplay.png
+
+rm -f text.aux text.dvi text.log textdata.* text.ps text.tex
+rm -f alphabottom.pgm alpha.pnm alphatop.pgm background.pnm bottom.pnm
+rm -f image.pnm imagecut.pnm sd1.pnm top.pnm
