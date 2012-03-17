@@ -6,14 +6,18 @@ while true; do
     picture="$dir/sleeve.jpg"
 
     temp=`cat ~/jukebox/tex/tempdata.data`
+    track=`cat ~/jukebox/tex/tdata.txt`
 
     if [ "$prev" != "$current" ]; then
 	sleep 2
 	if [ ! -e "$dir/.nodisplay" ]; then
-	    ~/jukebox/tex/smallcreate2 "$picture"
+	    # Create the image for Quimbies
+	    ~/src/smalldisplay/makedisplay "$picture" "$track"
 	    xscreensaver-getimage -display :1\
-	     -file ~/jukebox/tex/smalldisplay.tiff -root
-	    ~/jukebox/tex/smallcreate2 "$picture" 25 bottom 2
+	        -file /tmp/smalldisplay.png -root
+	    # Create the image for Stories
+	    ~/src/smalldisplay/makedisplay "$picture" "$track"\
+                25 2 "$temp"
 	fi
 	prev="$current"
     fi
