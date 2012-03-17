@@ -70,6 +70,8 @@ pnmcut 0 $top $screenWidth $screenHeight image.pnm > imagecut.pnm
 ppmmake black $screenWidth $screenHeight > background.pnm
 pnmpaste -replace imagecut.pnm 0 0 background.pnm > sd1.pnm
 
+# Finally combine the texts with the alpha channels and the background
+# image.
 if [ "$topText" != "" ]; then
     theight=`pnmcrop alphabottom.pgm | pnmfile | awk '{ print $6; }'`
     yoff=`expr $screenHeight - $theight - 10`
@@ -85,6 +87,7 @@ fi
 
 tifftopnm smalldisplay.tiff | pnmtopng > smalldisplay.png
 
+# Clean up after ourselves
 rm -f text.aux text.dvi text.log textdata.* text.ps text.tex
 rm -f alphabottom.pgm alpha.pnm alphatop.pgm background.pnm bottom.pnm
 rm -f image.pnm imagecut.pnm sd1.pnm top.pnm
