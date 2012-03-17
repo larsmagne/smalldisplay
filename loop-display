@@ -1,0 +1,22 @@
+#!/bin/bash
+
+while true; do
+    current=`cat ~/.amp.current`
+    dir=`dirname "$current"`
+    picture="$dir/sleeve.jpg"
+
+    temp=`cat ~/jukebox/tex/tempdata.data`
+
+    if [ "$prev" != "$current" ]; then
+	sleep 2
+	if [ ! -e "$dir/.nodisplay" ]; then
+	    ~/jukebox/tex/smallcreate2 "$picture"
+	    xscreensaver-getimage -display :1\
+	     -file ~/jukebox/tex/smalldisplay.tiff -root
+	    ~/jukebox/tex/smallcreate2 "$picture" 25 bottom 2
+	fi
+	prev="$current"
+    fi
+    sleep 1
+done
+
