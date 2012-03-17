@@ -38,11 +38,10 @@ for type in bottom top; do
 	echo "$text" >> textdata.tex
 
 	latex text.tex
-	dvips -f <text.dvi |\
-            sed 's/%%EndSetup/-90 rotate -880 -580 translate/' >text.ps
-	gs -q -sDEVICE=ppm -r200x200 -g385x2200 -sOutputFile=- -dNOPAUSE\
-            text.ps < /dev/null | pnmcut 0 0 385 2200 | pnmflip -r90 |\
-            pnminvert > "$type.pnm"
+	dvips -f <text.dvi >text.ps
+	gs -q -sDEVICE=ppm -r200x200 -g1500x2200 -sOutputFile=- -dNOPAUSE\
+            text.ps < /dev/null | pnminvert | pnmcrop |\
+	    pnmmargin -black 10 > "$type.pnm"
 
 	xsize=`pnmfile $type.pnm | awk '{ print $4; }'`
 	cp $type.pnm alpha.pnm
@@ -75,10 +74,10 @@ pnmpaste -replace imagecut.pnm 0 0 background.pnm > sd1.pnm
 # image.
 if [ "$topText" != "" ]; then
     theight=`pnmcrop alphabottom.pgm | pnmfile | awk '{ print $6; }'`
-    yoff=`expr $screenHeight - $theight - 10`
+    yoff=`expr $screenHeight - $theight - 15`
     twidth=`pnmcrop alphatop.pgm | pnmfile | awk '{ print $4; }'`
-    xoff=`expr $screenWidth - $twidth - 35`
-    pnmcomp -yoff=$yoff -alpha alphabottom.pgm bottom.pnm sd1.pnm |\
+    xoff=`expr $screenWidth - $twidth - 20`
+    pnmcomp -yoff $yoff -xoff 10 -alpha alphabottom.pgm bottom.pnm sd1.pnm |\
       pnmcomp -xoff $xoff -yoff 5 -alpha alphatop.pgm top.pnm | \
       pnmtotiff > smalldisplay.tiff
 else
@@ -89,6 +88,7 @@ fi
 tifftopnm smalldisplay.tiff | pnmtopng > smalldisplay.png
 
 # Clean up after ourselves
+exit
 rm -f text.aux text.dvi text.log textdata.* text.ps text.tex
 rm -f alphabottom.pgm alpha.pnm alphatop.pgm background.pnm bottom.pnm
 rm -f image.pnm imagecut.pnm sd1.pnm top.pnm
