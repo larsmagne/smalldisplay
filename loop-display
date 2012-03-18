@@ -12,8 +12,7 @@ while true; do
     temp=`cat ~/jukebox/tex/tempdata.data`
     track=`cat ~/jukebox/tex/tdata.txt`
 
-    if [ "$prev" != "$current" ]; then
-	sleep 2
+    if [ "$prev" != "$current" -a "$track" != "$prevtrack" ]; then
 	if [ ! -e "$dir/.nodisplay" ]; then
 	    # Create and display the image for Quimbies
 	    ~/src/smalldisplay/makedisplay "$picture" "$track"
@@ -25,6 +24,7 @@ while true; do
 	    cp /tmp/smalldisplay.tiff ~/jukebox/tex/smalldisplay25.tiff
 	fi
 	prev="$current"
+	prevtrack="$track"
     fi
     sleep 1
 done
