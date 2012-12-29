@@ -27,6 +27,7 @@ baseDir=`dirname $0`
 
 cp "$baseDir/text.tex" .
 cp "$baseDir/pfur8a.pfb" .
+cp "$baseDir/ot1pfu.fd" .
 
 # First create the text(s)
 for type in bottom top; do
