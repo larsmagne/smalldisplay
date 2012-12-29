@@ -1,0 +1,75 @@
+%Filename: ot1pfu.fd
+%Created by: tex fontinst
+%Created using fontinst v1.927
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{ot1pfu.fd}
+   [2009/07/02 Fontinst v1.927 font definitions for OT1/pfu.]
+
+\DeclareFontFamily{OT1}{pfu}{}
+
+\DeclareFontShape{OT1}{pfu}{m}{n}{
+   <-> pfur7t
+   <-> pfuk7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{m}{sc}{
+   <-> pfurc7t
+   <-> pfukc7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{m}{sl}{
+   <-> pfuro7t
+   <-> pfuko7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{b}{n}{
+   <-> pfub7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{b}{sc}{
+   <-> pfubc7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{b}{sl}{
+   <-> pfubo7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{eb}{n}{
+   <-> pfuh7t
+   <-> pfux7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{eb}{sc}{
+   <-> pfuhc7t
+   <-> pfuxc7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{eb}{sl}{
+   <-> pfuho7t
+   <-> pfuxo7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{l}{n}{
+   <-> pful7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{l}{sc}{
+   <-> pfulc7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{l}{sl}{
+   <-> pfulo7t
+}{}
+
+\DeclareFontShape{OT1}{pfu}{m}{it}{<->ssub * pfu/m/sl}{}
+\DeclareFontShape{OT1}{pfu}{bx}{n}{<->ssub * pfu/b/n}{}
+\DeclareFontShape{OT1}{pfu}{bx}{sc}{<->ssub * pfu/b/sc}{}
+\DeclareFontShape{OT1}{pfu}{bx}{sl}{<->ssub * pfu/b/sl}{}
+\DeclareFontShape{OT1}{pfu}{b}{it}{<->ssub * pfu/b/sl}{}
+\DeclareFontShape{OT1}{pfu}{bx}{it}{<->ssub * pfu/b/it}{}
+\DeclareFontShape{OT1}{pfu}{eb}{it}{<->ssub * pfu/eb/sl}{}
+\DeclareFontShape{OT1}{pfu}{l}{it}{<->ssub * pfu/l/sl}{}
+
+\endinput
